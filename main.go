@@ -28,18 +28,18 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPort() string {
-     var port = os.Getenv("PORT") // ----> (A)
+     var port = os.Getenv("PORT")
      if port == "" {
         port = "8080"
         fmt.Println("No Port In Heroku" + port)
      }
-     return ":" + port // ----> (B)
+     return ":" + port 
 }
 
 func handleRequest() {
     http.HandleFunc("/", homePage)
     http.HandleFunc("/getAddress", getAddressBookAll)
-    http.ListenAndServe(getPort(), nil)
+    http.ListenAndServe(getPort(), nil) // ----> เพิ่ม getPort ตรงนี้ด้วย
 }
 func main() {
     handleRequest()
